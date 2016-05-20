@@ -15,37 +15,35 @@
 	       	<th>name</th>
 	       	<th>功能</th>
 	    </tr>
-	    
-	    
+	   
         <%
-            List<User> users = (List<User>)request.getSession().getAttribute("users");
-            for (User user:users) {
+            Map<Integer, User> users = (Map<Integer, User>)request.getServletContext().getAttribute("users");
+            Set<Integer> set = users.keySet();
+            Iterator<Integer> it = set.iterator();
+            while(it.hasNext()){
+                Integer id =  it.next();
+                User user = users.get(id);
+               
         %>
-        	<form name="f1" method="post" action="orderinfo">
-	   			<tr>
-	      			<td align="center"><%=user.getId() %></td>
-					<td align="center"><%=user.getId() %></td>
-					<td align="center">
-						<input type="button" value="删除" onclick="document.location='delUser?id='+<%=user.getId() %>"/>
-					</td>
-	   		 	</tr>
-			</form>
+   			<tr>
+      			<td align="center"><%=user.getId() %></td>
+				<td align="center"><%=user.getName() %></td>
+				<td align="center">
+					<input type="button" value="删除" onclick="document.location='userHandle?id='+<%=user.getId() %>"/>
+				</td>
+   		 	 </tr>
 		<%
             }
         %>
-        
-	    
-	  <%--  	<c:forEach var="user" items="${users}"> 
-			<form name="f1" method="post" action="orderinfo">
-	   			<tr>
-	      			<td align="center">${user.key}</td>
-					<td align="center">${user.value.name}</td>
-					<td align="center">
-						<input type="button" value="删除" onclick="document.location='delUser?id='+${user.key}"/>
-					</td>
-	   		 	</tr>
-			</form>
-		</c:forEach> --%>
-	</table>
+    </table>
+    <br>
+    <br>
+    <br>
+    
+    <form name="f1" method="post" action="userHandle" align="center" >
+       id:<input name="id" type="text"><br><br>
+       name:<input name="name" type="text"><br><br>
+       <input type="submit" value="Submit" />
+    </form>
 </body>
 </html>
