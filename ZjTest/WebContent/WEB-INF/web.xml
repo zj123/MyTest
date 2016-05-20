@@ -25,4 +25,14 @@
     <servlet-name>UserHandleServlet</servlet-name>
     <url-pattern>/userHandle</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>UserJsonServlet</servlet-name>
+    <servlet-class>org.zj.servlet.UserJsonServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>UserJsonServlet</servlet-name>
+    <url-pattern>/json</url-pattern>
+  </servlet-mapping>
 </web-app>
