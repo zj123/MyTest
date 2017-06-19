@@ -8,5 +8,4 @@ public interface EnumEntity<T> {
 
     @JsonProperty("id")
     T getValue();
-
 }
